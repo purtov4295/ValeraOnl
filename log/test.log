@@ -1,0 +1,1600 @@
+  [1m[35m (55.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "rails_starter_project_test"[0m
+  [1m[35m (404.4ms)[0m  [1m[35mCREATE DATABASE "rails_starter_project_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (1.8ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "conditions" CASCADE[0m
+  [1m[35m (13.2ms)[0m  [1m[35mCREATE TABLE "conditions" ("id" bigserial primary key, "attr_name" character varying, "min" integer, "max" integer, "attr_name_eff" character varying, "value_eff" integer, "valera_action_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (5.2ms)[0m  [1m[35mCREATE INDEX "index_conditions_on_valera_action_id" ON "conditions" ("valera_action_id")[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "droptables" CASCADE[0m
+  [1m[35m (7.4ms)[0m  [1m[35mCREATE TABLE "droptables" ("id" bigserial primary key)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "stats_records" CASCADE[0m
+  [1m[35m (9.5ms)[0m  [1m[35mCREATE TABLE "stats_records" ("id" bigserial primary key, "name" character varying, "money" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (11.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying, "name" character varying, "password_digest" character varying, "health" integer, "alcohol" integer, "happy" integer, "tired" integer, "money" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "valera_actions" CASCADE[0m
+  [1m[35m (8.0ms)[0m  [1m[35mCREATE TABLE "valera_actions" ("id" bigserial primary key, "name" character varying, "health" integer, "alcohol" integer, "happy" integer, "tired" integer, "money" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.7ms)[0m  [1m[35mALTER TABLE "conditions" ADD CONSTRAINT "fk_rails_300031b3b4"
+FOREIGN KEY ("valera_action_id")
+  REFERENCES "valera_actions" ("id")
+[0m
+  [1m[35m (8.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20220121150302)[0m
+  [1m[35m (1.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20220119163627),
+(20220119170056),
+(20220119202940);
+
+[0m
+  [1m[35m (8.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "test"], ["created_at", "2022-01-21 16:25:31.109947"], ["updated_at", "2022-01-21 16:25:31.109947"]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "5a9372571c04bff16e8e294bd50e62e505c80e11"], ["created_at", "2022-01-21 16:25:31.123092"], ["updated_at", "2022-01-21 16:25:31.123092"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.5ms)[0m  [1m[35mALTER TABLE "droptables" DISABLE TRIGGER ALL;ALTER TABLE "stats_records" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "valera_actions" DISABLE TRIGGER ALL;ALTER TABLE "conditions" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (5.0ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (3.0ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'rails_starter_project_test'[0m
+  [1m[35m (32.3ms)[0m  [1m[35mTRUNCATE TABLE "droptables", "stats_records", "users", "valera_actions", "conditions" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "droptables" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "stats_records" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "valera_actions" ENABLE TRIGGER ALL;ALTER TABLE "conditions" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (313.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS "rails_starter_project_test"[0m
+  [1m[35m (1908.6ms)[0m  [1m[35mCREATE DATABASE "rails_starter_project_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "asds" CASCADE[0m
+  [1m[35m (23.6ms)[0m  [1m[35mCREATE TABLE "asds" ("id" bigserial primary key, "name" character varying, "money" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "conditions" CASCADE[0m
+  [1m[35m (13.5ms)[0m  [1m[35mCREATE TABLE "conditions" ("id" bigserial primary key, "attr_name" character varying, "min" integer, "max" integer, "attr_name_eff" character varying, "value_eff" integer, "valera_action_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (8.9ms)[0m  [1m[35mCREATE INDEX "index_conditions_on_valera_action_id" ON "conditions" ("valera_action_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "stats_records" CASCADE[0m
+  [1m[35m (17.0ms)[0m  [1m[35mCREATE TABLE "stats_records" ("id" bigserial primary key, "name" character varying, "money" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (15.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying, "name" character varying, "password_digest" character varying, "health" integer, "alcohol" integer, "happy" integer, "tired" integer, "money" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "valera_actions" CASCADE[0m
+  [1m[35m (16.0ms)[0m  [1m[35mCREATE TABLE "valera_actions" ("id" bigserial primary key, "name" character varying, "health" integer, "alcohol" integer, "happy" integer, "tired" integer, "money" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (19.4ms)[0m  [1m[35mALTER TABLE "conditions" ADD CONSTRAINT "fk_rails_300031b3b4"
+FOREIGN KEY ("valera_action_id")
+  REFERENCES "valera_actions" ("id")
+[0m
+  [1m[35m (10.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (4.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20220121164612)[0m
+  [1m[35m (2.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20220119163627),
+(20220119170056),
+(20220119202940),
+(20220121150302);
+
+[0m
+  [1m[35m (11.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (4.8ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "test"], ["created_at", "2022-04-27 19:28:20.014567"], ["updated_at", "2022-04-27 19:28:20.014567"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "2bc482094c35953fa0ee63f0fb49102570342879"], ["created_at", "2022-04-27 19:28:20.023816"], ["updated_at", "2022-04-27 19:28:20.023816"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (4.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "asds" DISABLE TRIGGER ALL;ALTER TABLE "stats_records" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "valera_actions" DISABLE TRIGGER ALL;ALTER TABLE "conditions" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (6.4ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (1.0ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'rails_starter_project_test'[0m
+  [1m[35m (100.0ms)[0m  [1m[35mTRUNCATE TABLE "asds", "stats_records", "users", "valera_actions", "conditions" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.7ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "asds" ENABLE TRIGGER ALL;ALTER TABLE "stats_records" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "valera_actions" ENABLE TRIGGER ALL;ALTER TABLE "conditions" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (4.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "name", "password_digest", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["id", 1], ["email", "user1@gmail.com"], ["name", "User1"], ["password_digest", "$2a$04$TgxaTfHeEgP6swYZdGEIFOjOWpbqlSJ0L5KXY7DbJ30waJWJXLBWa"], ["health", 100], ["alcohol", 0], ["happy", 0], ["tired", 0], ["money", 300], ["created_at", "2022-04-27 19:28:20.457151"], ["updated_at", "2022-04-27 19:28:20.457151"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (4.0ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "Go to work"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.6ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Go to work"], ["health", 0], ["alcohol", -30], ["happy", -5], ["tired", 70], ["money", 100], ["created_at", "2022-04-27 19:28:20.473669"], ["updated_at", "2022-04-27 19:28:20.473669"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCondition Create (8.9ms)[0m  [1m[32mINSERT INTO "conditions" ("attr_name", "min", "max", "attr_name_eff", "value_eff", "valera_action_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["attr_name", "alcohol"], ["min", 0], ["max", 70], ["attr_name_eff", "none"], ["value_eff", 0], ["valera_action_id", 1], ["created_at", "2022-04-27 19:28:20.533497"], ["updated_at", "2022-04-27 19:28:20.533497"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "user1@gmail.com"], ["name", "User1"], ["password_digest", "$2a$04$VDgBT380aZqnXZwRaoE8nedCH3u482BsEwg0aTCCg4k9aeoUrIfeW"], ["health", 100], ["alcohol", 0], ["happy", 0], ["tired", 0], ["money", 0], ["created_at", "2022-04-27 19:28:20.668788"], ["updated_at", "2022-04-27 19:28:20.668788"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "MyString"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.3ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "MyString"], ["health", 1], ["alcohol", 1], ["happy", 1], ["tired", 1], ["money", 1], ["created_at", "2022-04-27 19:28:20.678502"], ["updated_at", "2022-04-27 19:28:20.678502"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "MyString"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.3ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "MyString"], ["health", 1], ["alcohol", 1], ["happy", 1], ["tired", 1], ["money", 1], ["created_at", "2022-04-27 19:28:20.689624"], ["updated_at", "2022-04-27 19:28:20.689624"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "MyString"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.4ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "MyString"], ["health", 1], ["alcohol", 1], ["happy", 1], ["tired", 1], ["money", 1], ["created_at", "2022-04-27 19:28:20.694815"], ["updated_at", "2022-04-27 19:28:20.694815"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 AND "valera_actions"."id" != $2 LIMIT $3[0m  [["name", "MyString"], ["id", 4], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStatsRecord Create (4.6ms)[0m  [1m[32mINSERT INTO "stats_records" ("id", "name", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 1], ["name", "test"], ["money", 400], ["created_at", "2022-04-27 19:28:20.716642"], ["updated_at", "2022-04-27 19:28:20.716642"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@mail.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "test"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (8.7ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (8.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "asds" DISABLE TRIGGER ALL;ALTER TABLE "stats_records" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "valera_actions" DISABLE TRIGGER ALL;ALTER TABLE "conditions" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (11.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.8ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (0.8ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'rails_starter_project_test'[0m
+  [1m[35m (165.5ms)[0m  [1m[35mTRUNCATE TABLE "asds", "stats_records", "users", "valera_actions", "conditions" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "asds" ENABLE TRIGGER ALL;ALTER TABLE "stats_records" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "valera_actions" ENABLE TRIGGER ALL;ALTER TABLE "conditions" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (4.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "name", "password_digest", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["id", 1], ["email", "user1@gmail.com"], ["name", "User1"], ["password_digest", "$2a$04$MGmWXrAHwK26cP558xy45.3o/OM9I0eufRYIxEnoty8R1XBwZnp5u"], ["health", 100], ["alcohol", 0], ["happy", 0], ["tired", 0], ["money", 300], ["created_at", "2022-04-27 19:40:36.324511"], ["updated_at", "2022-04-27 19:40:36.324511"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (4.8ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "Go to work"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.6ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Go to work"], ["health", 0], ["alcohol", -30], ["happy", -5], ["tired", 70], ["money", 100], ["created_at", "2022-04-27 19:40:36.341793"], ["updated_at", "2022-04-27 19:40:36.341793"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCondition Create (9.4ms)[0m  [1m[32mINSERT INTO "conditions" ("attr_name", "min", "max", "attr_name_eff", "value_eff", "valera_action_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["attr_name", "alcohol"], ["min", 0], ["max", 70], ["attr_name_eff", "none"], ["value_eff", 0], ["valera_action_id", 1], ["created_at", "2022-04-27 19:40:36.365195"], ["updated_at", "2022-04-27 19:40:36.365195"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "user1@gmail.com"], ["name", "User1"], ["password_digest", "$2a$04$45v8X0xOETo5KUT6k.r0Z.KX4HkN8rB.5bG9Og3M/5h8FiipokEGS"], ["health", 100], ["alcohol", 0], ["happy", 0], ["tired", 0], ["money", 0], ["created_at", "2022-04-27 19:40:36.471424"], ["updated_at", "2022-04-27 19:40:36.471424"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "MyString"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.3ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "MyString"], ["health", 1], ["alcohol", 1], ["happy", 1], ["tired", 1], ["money", 1], ["created_at", "2022-04-27 19:40:36.482916"], ["updated_at", "2022-04-27 19:40:36.482916"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "MyString"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.5ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "MyString"], ["health", 1], ["alcohol", 1], ["happy", 1], ["tired", 1], ["money", 1], ["created_at", "2022-04-27 19:40:36.489667"], ["updated_at", "2022-04-27 19:40:36.489667"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "MyString"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.3ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "MyString"], ["health", 1], ["alcohol", 1], ["happy", 1], ["tired", 1], ["money", 1], ["created_at", "2022-04-27 19:40:36.496709"], ["updated_at", "2022-04-27 19:40:36.496709"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 AND "valera_actions"."id" != $2 LIMIT $3[0m  [["name", "MyString"], ["id", 4], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStatsRecord Create (5.3ms)[0m  [1m[32mINSERT INTO "stats_records" ("id", "name", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 1], ["name", "test"], ["money", 400], ["created_at", "2022-04-27 19:40:36.513779"], ["updated_at", "2022-04-27 19:40:36.513779"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@mail.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "test"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "asds" DISABLE TRIGGER ALL;ALTER TABLE "stats_records" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "valera_actions" DISABLE TRIGGER ALL;ALTER TABLE "conditions" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (10.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.8ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (0.8ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'rails_starter_project_test'[0m
+  [1m[35m (109.4ms)[0m  [1m[35mTRUNCATE TABLE "asds", "stats_records", "users", "valera_actions", "conditions" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "asds" ENABLE TRIGGER ALL;ALTER TABLE "stats_records" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "valera_actions" ENABLE TRIGGER ALL;ALTER TABLE "conditions" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (4.9ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "MyString"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.7ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "MyString"], ["health", 1], ["alcohol", 1], ["happy", 1], ["tired", 1], ["money", 1], ["created_at", "2022-04-27 19:41:21.601473"], ["updated_at", "2022-04-27 19:41:21.601473"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "MyString"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.4ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "MyString"], ["health", 1], ["alcohol", 1], ["happy", 1], ["tired", 1], ["money", 1], ["created_at", "2022-04-27 19:41:21.626146"], ["updated_at", "2022-04-27 19:41:21.626146"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "MyString"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.3ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "MyString"], ["health", 1], ["alcohol", 1], ["happy", 1], ["tired", 1], ["money", 1], ["created_at", "2022-04-27 19:41:21.632223"], ["updated_at", "2022-04-27 19:41:21.632223"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 AND "valera_actions"."id" != $2 LIMIT $3[0m  [["name", "MyString"], ["id", 3], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "asds" DISABLE TRIGGER ALL;ALTER TABLE "stats_records" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "valera_actions" DISABLE TRIGGER ALL;ALTER TABLE "conditions" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (8.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.6ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (0.8ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'rails_starter_project_test'[0m
+  [1m[35m (115.2ms)[0m  [1m[35mTRUNCATE TABLE "asds", "stats_records", "users", "valera_actions", "conditions" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "asds" ENABLE TRIGGER ALL;ALTER TABLE "stats_records" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "valera_actions" ENABLE TRIGGER ALL;ALTER TABLE "conditions" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (2.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (4.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "name", "password_digest", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["id", 1], ["email", "user1@gmail.com"], ["name", "User1"], ["password_digest", "$2a$04$3EqU2TrT6DsyN6Sy0/k6te.by2pR4kVGTakbUe5xaMv0kOtayfbJK"], ["health", 100], ["alcohol", 0], ["happy", 0], ["tired", 0], ["money", 300], ["created_at", "2022-04-27 19:42:19.677928"], ["updated_at", "2022-04-27 19:42:19.677928"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (4.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "Go to work"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.6ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Go to work"], ["health", 0], ["alcohol", -30], ["happy", -5], ["tired", 70], ["money", 100], ["created_at", "2022-04-27 19:42:19.695629"], ["updated_at", "2022-04-27 19:42:19.695629"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCondition Create (8.5ms)[0m  [1m[32mINSERT INTO "conditions" ("attr_name", "min", "max", "attr_name_eff", "value_eff", "valera_action_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["attr_name", "alcohol"], ["min", 0], ["max", 70], ["attr_name_eff", "none"], ["value_eff", 0], ["valera_action_id", 1], ["created_at", "2022-04-27 19:42:19.719878"], ["updated_at", "2022-04-27 19:42:19.719878"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "user1@gmail.com"], ["name", "User1"], ["password_digest", "$2a$04$ngPtRys1yeQ4H17LJ7Rkvuw9iVUByqxv2oFzV9pJ56yc9.Z3t3Cbm"], ["health", 100], ["alcohol", 0], ["happy", 0], ["tired", 0], ["money", 0], ["created_at", "2022-04-27 19:42:19.818609"], ["updated_at", "2022-04-27 19:42:19.818609"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "MyString"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.4ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "MyString"], ["health", 1], ["alcohol", 1], ["happy", 1], ["tired", 1], ["money", 1], ["created_at", "2022-04-27 19:42:19.828682"], ["updated_at", "2022-04-27 19:42:19.828682"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "MyString"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.3ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "MyString"], ["health", 1], ["alcohol", 1], ["happy", 1], ["tired", 1], ["money", 1], ["created_at", "2022-04-27 19:42:19.834998"], ["updated_at", "2022-04-27 19:42:19.834998"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "MyString"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.3ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "MyString"], ["health", 1], ["alcohol", 1], ["happy", 1], ["tired", 1], ["money", 1], ["created_at", "2022-04-27 19:42:19.840569"], ["updated_at", "2022-04-27 19:42:19.840569"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 AND "valera_actions"."id" != $2 LIMIT $3[0m  [["name", "MyString"], ["id", 4], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStatsRecord Create (4.9ms)[0m  [1m[32mINSERT INTO "stats_records" ("id", "name", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 1], ["name", "test"], ["money", 400], ["created_at", "2022-04-27 19:42:19.859797"], ["updated_at", "2022-04-27 19:42:19.859797"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@mail.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "test"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (5.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "asds" DISABLE TRIGGER ALL;ALTER TABLE "stats_records" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "valera_actions" DISABLE TRIGGER ALL;ALTER TABLE "conditions" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (7.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.9ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (0.8ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'rails_starter_project_test'[0m
+  [1m[35m (155.6ms)[0m  [1m[35mTRUNCATE TABLE "asds", "stats_records", "users", "valera_actions", "conditions" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "asds" ENABLE TRIGGER ALL;ALTER TABLE "stats_records" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "valera_actions" ENABLE TRIGGER ALL;ALTER TABLE "conditions" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (6.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (2.6ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "name", "password_digest", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["id", 1], ["email", "user1@gmail.com"], ["name", "User1"], ["password_digest", "$2a$04$5PA4aAhV6TiGhkhDyuZ/wO7rSN2ro1aeMM6y5V3BbCcP/UUmTq8Ri"], ["health", 100], ["alcohol", 0], ["happy", 0], ["tired", 0], ["money", 300], ["created_at", "2022-04-27 19:43:23.814460"], ["updated_at", "2022-04-27 19:43:23.814460"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (5.8ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "Go to work"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (2.4ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Go to work"], ["health", 0], ["alcohol", -30], ["happy", -5], ["tired", 70], ["money", 100], ["created_at", "2022-04-27 19:43:23.846053"], ["updated_at", "2022-04-27 19:43:23.846053"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCondition Create (8.8ms)[0m  [1m[32mINSERT INTO "conditions" ("attr_name", "min", "max", "attr_name_eff", "value_eff", "valera_action_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["attr_name", "alcohol"], ["min", 0], ["max", 70], ["attr_name_eff", "none"], ["value_eff", 0], ["valera_action_id", 1], ["created_at", "2022-04-27 19:43:23.880177"], ["updated_at", "2022-04-27 19:43:23.880177"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "user1@gmail.com"], ["name", "User1"], ["password_digest", "$2a$04$uVPMhYdIlLedC8kMGjpPLuLuABoPeFEzc3kXl3iUE0mrQAaRrBweW"], ["health", 100], ["alcohol", 0], ["happy", 0], ["tired", 0], ["money", 0], ["created_at", "2022-04-27 19:43:23.985799"], ["updated_at", "2022-04-27 19:43:23.985799"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "MyString"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.3ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "MyString"], ["health", 1], ["alcohol", 1], ["happy", 1], ["tired", 1], ["money", 1], ["created_at", "2022-04-27 19:43:23.995754"], ["updated_at", "2022-04-27 19:43:23.995754"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "MyString"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.3ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "MyString"], ["health", 1], ["alcohol", 1], ["happy", 1], ["tired", 1], ["money", 1], ["created_at", "2022-04-27 19:43:24.002560"], ["updated_at", "2022-04-27 19:43:24.002560"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "MyString"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.3ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "MyString"], ["health", 1], ["alcohol", 1], ["happy", 1], ["tired", 1], ["money", 1], ["created_at", "2022-04-27 19:43:24.008320"], ["updated_at", "2022-04-27 19:43:24.008320"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 AND "valera_actions"."id" != $2 LIMIT $3[0m  [["name", "MyString"], ["id", 4], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStatsRecord Create (5.1ms)[0m  [1m[32mINSERT INTO "stats_records" ("id", "name", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 1], ["name", "test"], ["money", 400], ["created_at", "2022-04-27 19:43:24.026005"], ["updated_at", "2022-04-27 19:43:24.026005"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@mail.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "test"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "asds" DISABLE TRIGGER ALL;ALTER TABLE "stats_records" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "valera_actions" DISABLE TRIGGER ALL;ALTER TABLE "conditions" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (8.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.7ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (0.9ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'rails_starter_project_test'[0m
+  [1m[35m (117.7ms)[0m  [1m[35mTRUNCATE TABLE "asds", "stats_records", "users", "valera_actions", "conditions" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "asds" ENABLE TRIGGER ALL;ALTER TABLE "stats_records" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "valera_actions" ENABLE TRIGGER ALL;ALTER TABLE "conditions" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (4.4ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "MyString"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.8ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "MyString"], ["health", 1], ["alcohol", 1], ["happy", 1], ["tired", 1], ["money", 1], ["created_at", "2022-04-27 19:44:20.298741"], ["updated_at", "2022-04-27 19:44:20.298741"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "MyString"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.3ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "MyString"], ["health", 1], ["alcohol", 1], ["happy", 1], ["tired", 1], ["money", 1], ["created_at", "2022-04-27 19:44:20.324637"], ["updated_at", "2022-04-27 19:44:20.324637"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "MyString"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.3ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "MyString"], ["health", 1], ["alcohol", 1], ["happy", 1], ["tired", 1], ["money", 1], ["created_at", "2022-04-27 19:44:20.330732"], ["updated_at", "2022-04-27 19:44:20.330732"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 AND "valera_actions"."id" != $2 LIMIT $3[0m  [["name", "MyString"], ["id", 3], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "asds" DISABLE TRIGGER ALL;ALTER TABLE "stats_records" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "valera_actions" DISABLE TRIGGER ALL;ALTER TABLE "conditions" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (8.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.8ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (0.8ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'rails_starter_project_test'[0m
+  [1m[35m (107.1ms)[0m  [1m[35mTRUNCATE TABLE "asds", "stats_records", "users", "valera_actions", "conditions" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "asds" ENABLE TRIGGER ALL;ALTER TABLE "stats_records" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "valera_actions" ENABLE TRIGGER ALL;ALTER TABLE "conditions" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (4.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "name", "password_digest", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["id", 1], ["email", "user1@gmail.com"], ["name", "User1"], ["password_digest", "$2a$04$ol3j3B66gHXpYiGqlXO1eufyltouOSTQt1KqE6mG/VN/gqQNsqZdK"], ["health", 100], ["alcohol", 0], ["happy", 0], ["tired", 0], ["money", 300], ["created_at", "2022-04-27 19:46:37.372167"], ["updated_at", "2022-04-27 19:46:37.372167"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (4.6ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "Go to work"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.6ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Go to work"], ["health", 0], ["alcohol", -30], ["happy", -5], ["tired", 70], ["money", 100], ["created_at", "2022-04-27 19:46:37.390437"], ["updated_at", "2022-04-27 19:46:37.390437"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCondition Create (9.0ms)[0m  [1m[32mINSERT INTO "conditions" ("attr_name", "min", "max", "attr_name_eff", "value_eff", "valera_action_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["attr_name", "alcohol"], ["min", 0], ["max", 70], ["attr_name_eff", "none"], ["value_eff", 0], ["valera_action_id", 1], ["created_at", "2022-04-27 19:46:37.414508"], ["updated_at", "2022-04-27 19:46:37.414508"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "user1@gmail.com"], ["name", "User1"], ["password_digest", "$2a$04$ZFdHh0vFr6WE7RVMQYWDOuc/jjtSEQXwHhi24J1fbQ7zA/472AxF."], ["health", 100], ["alcohol", 0], ["happy", 0], ["tired", 0], ["money", 0], ["created_at", "2022-04-27 19:46:37.514416"], ["updated_at", "2022-04-27 19:46:37.514416"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "MyString"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.3ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "MyString"], ["health", 1], ["alcohol", 1], ["happy", 1], ["tired", 1], ["money", 1], ["created_at", "2022-04-27 19:46:37.525391"], ["updated_at", "2022-04-27 19:46:37.525391"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "MyString"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.3ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "MyString"], ["health", 1], ["alcohol", 1], ["happy", 1], ["tired", 1], ["money", 1], ["created_at", "2022-04-27 19:46:37.532014"], ["updated_at", "2022-04-27 19:46:37.532014"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "MyString"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.4ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "MyString"], ["health", 1], ["alcohol", 1], ["happy", 1], ["tired", 1], ["money", 1], ["created_at", "2022-04-27 19:46:37.537128"], ["updated_at", "2022-04-27 19:46:37.537128"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 AND "valera_actions"."id" != $2 LIMIT $3[0m  [["name", "MyString"], ["id", 4], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStatsRecord Create (5.1ms)[0m  [1m[32mINSERT INTO "stats_records" ("id", "name", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 1], ["name", "test"], ["money", 400], ["created_at", "2022-04-27 19:46:37.553706"], ["updated_at", "2022-04-27 19:46:37.553706"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@mail.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "test"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "asds" DISABLE TRIGGER ALL;ALTER TABLE "stats_records" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "valera_actions" DISABLE TRIGGER ALL;ALTER TABLE "conditions" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (7.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.6ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (0.9ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'rails_starter_project_test'[0m
+  [1m[35m (108.7ms)[0m  [1m[35mTRUNCATE TABLE "asds", "stats_records", "users", "valera_actions", "conditions" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "asds" ENABLE TRIGGER ALL;ALTER TABLE "stats_records" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "valera_actions" ENABLE TRIGGER ALL;ALTER TABLE "conditions" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (4.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "name", "password_digest", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["id", 1], ["email", "user1@gmail.com"], ["name", "User1"], ["password_digest", "$2a$04$gBYaE1Pkigc/IBzTJJXU8O/rEUXkA4UQz8K9EEgP1BFL7oGmoFHc6"], ["health", 100], ["alcohol", 0], ["happy", 0], ["tired", 0], ["money", 300], ["created_at", "2022-04-27 19:47:37.570767"], ["updated_at", "2022-04-27 19:47:37.570767"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (4.2ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "Go to work"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.7ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Go to work"], ["health", 0], ["alcohol", -30], ["happy", -5], ["tired", 70], ["money", 100], ["created_at", "2022-04-27 19:47:37.588596"], ["updated_at", "2022-04-27 19:47:37.588596"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCondition Create (8.6ms)[0m  [1m[32mINSERT INTO "conditions" ("attr_name", "min", "max", "attr_name_eff", "value_eff", "valera_action_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["attr_name", "alcohol"], ["min", 0], ["max", 70], ["attr_name_eff", "none"], ["value_eff", 0], ["valera_action_id", 1], ["created_at", "2022-04-27 19:47:37.612430"], ["updated_at", "2022-04-27 19:47:37.612430"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "user1@gmail.com"], ["name", "User1"], ["password_digest", "$2a$04$yaDeNg3lOm4Xf31gjYxm4.zQl05yzIjrrOwfBu34ftOQr7KYApVnG"], ["health", 100], ["alcohol", 0], ["happy", 0], ["tired", 0], ["money", 0], ["created_at", "2022-04-27 19:47:37.717279"], ["updated_at", "2022-04-27 19:47:37.717279"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "MyString"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.3ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "MyString"], ["health", 1], ["alcohol", 1], ["happy", 1], ["tired", 1], ["money", 1], ["created_at", "2022-04-27 19:47:37.728244"], ["updated_at", "2022-04-27 19:47:37.728244"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "MyString"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.3ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "MyString"], ["health", 1], ["alcohol", 1], ["happy", 1], ["tired", 1], ["money", 1], ["created_at", "2022-04-27 19:47:37.735266"], ["updated_at", "2022-04-27 19:47:37.735266"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "MyString"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.3ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "MyString"], ["health", 1], ["alcohol", 1], ["happy", 1], ["tired", 1], ["money", 1], ["created_at", "2022-04-27 19:47:37.741225"], ["updated_at", "2022-04-27 19:47:37.741225"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 AND "valera_actions"."id" != $2 LIMIT $3[0m  [["name", "MyString"], ["id", 4], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStatsRecord Create (4.9ms)[0m  [1m[32mINSERT INTO "stats_records" ("id", "name", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 1], ["name", "test"], ["money", 400], ["created_at", "2022-04-27 19:47:37.756554"], ["updated_at", "2022-04-27 19:47:37.756554"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@mail.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "test"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "asds" DISABLE TRIGGER ALL;ALTER TABLE "stats_records" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "valera_actions" DISABLE TRIGGER ALL;ALTER TABLE "conditions" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (8.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.8ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (0.9ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'rails_starter_project_test'[0m
+  [1m[35m (143.2ms)[0m  [1m[35mTRUNCATE TABLE "asds", "stats_records", "users", "valera_actions", "conditions" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "asds" ENABLE TRIGGER ALL;ALTER TABLE "stats_records" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "valera_actions" ENABLE TRIGGER ALL;ALTER TABLE "conditions" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (4.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "name", "password_digest", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["id", 1], ["email", "user1@gmail.com"], ["name", "User1"], ["password_digest", "$2a$04$TOeg4TXbNvCqn3sEyI2Sae/HmGOMrwUClB1kTa5ctY.DV30cIpGry"], ["health", 100], ["alcohol", 0], ["happy", 0], ["tired", 0], ["money", 300], ["created_at", "2022-04-27 19:48:50.510750"], ["updated_at", "2022-04-27 19:48:50.510750"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (4.1ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "Go to work"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.6ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Go to work"], ["health", 0], ["alcohol", -30], ["happy", -5], ["tired", 70], ["money", 100], ["created_at", "2022-04-27 19:48:50.528300"], ["updated_at", "2022-04-27 19:48:50.528300"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCondition Create (9.0ms)[0m  [1m[32mINSERT INTO "conditions" ("attr_name", "min", "max", "attr_name_eff", "value_eff", "valera_action_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["attr_name", "alcohol"], ["min", 0], ["max", 70], ["attr_name_eff", "none"], ["value_eff", 0], ["valera_action_id", 1], ["created_at", "2022-04-27 19:48:50.551723"], ["updated_at", "2022-04-27 19:48:50.551723"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "user1@gmail.com"], ["name", "User1"], ["password_digest", "$2a$04$hb/FsL4EUvMSUON3l1PQHek6zL6DwzRwjPK3ItptM4kQhkp.iCRkS"], ["health", 100], ["alcohol", 0], ["happy", 0], ["tired", 0], ["money", 0], ["created_at", "2022-04-27 19:48:50.652883"], ["updated_at", "2022-04-27 19:48:50.652883"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "MyString"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.3ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "MyString"], ["health", 1], ["alcohol", 1], ["happy", 1], ["tired", 1], ["money", 1], ["created_at", "2022-04-27 19:48:50.662325"], ["updated_at", "2022-04-27 19:48:50.662325"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "MyString"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.4ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "MyString"], ["health", 1], ["alcohol", 1], ["happy", 1], ["tired", 1], ["money", 1], ["created_at", "2022-04-27 19:48:50.667874"], ["updated_at", "2022-04-27 19:48:50.667874"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "MyString"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.3ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "MyString"], ["health", 1], ["alcohol", 1], ["happy", 1], ["tired", 1], ["money", 1], ["created_at", "2022-04-27 19:48:50.673919"], ["updated_at", "2022-04-27 19:48:50.673919"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 AND "valera_actions"."id" != $2 LIMIT $3[0m  [["name", "MyString"], ["id", 4], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStatsRecord Create (4.7ms)[0m  [1m[32mINSERT INTO "stats_records" ("id", "name", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 1], ["name", "test"], ["money", 400], ["created_at", "2022-04-27 19:48:50.689647"], ["updated_at", "2022-04-27 19:48:50.689647"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@mail.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "test"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "asds" DISABLE TRIGGER ALL;ALTER TABLE "stats_records" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "valera_actions" DISABLE TRIGGER ALL;ALTER TABLE "conditions" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (6.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.8ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (0.8ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'rails_starter_project_test'[0m
+  [1m[35m (121.1ms)[0m  [1m[35mTRUNCATE TABLE "asds", "stats_records", "users", "valera_actions", "conditions" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "asds" ENABLE TRIGGER ALL;ALTER TABLE "stats_records" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "valera_actions" ENABLE TRIGGER ALL;ALTER TABLE "conditions" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (4.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.1ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "name", "password_digest", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["id", 1], ["email", "user1@gmail.com"], ["name", "User1"], ["password_digest", "$2a$04$80EhBIAwNvMVIMd0j/V51edfmdFHdCovKXR1XmTJ5URgYgfVPdRTW"], ["health", 100], ["alcohol", 0], ["happy", 0], ["tired", 0], ["money", 300], ["created_at", "2022-04-27 19:49:08.276499"], ["updated_at", "2022-04-27 19:49:08.276499"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (4.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "Go to work"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.7ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Go to work"], ["health", 0], ["alcohol", -30], ["happy", -5], ["tired", 70], ["money", 100], ["created_at", "2022-04-27 19:49:08.295841"], ["updated_at", "2022-04-27 19:49:08.295841"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCondition Create (9.2ms)[0m  [1m[32mINSERT INTO "conditions" ("attr_name", "min", "max", "attr_name_eff", "value_eff", "valera_action_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["attr_name", "alcohol"], ["min", 0], ["max", 70], ["attr_name_eff", "none"], ["value_eff", 0], ["valera_action_id", 1], ["created_at", "2022-04-27 19:49:08.319889"], ["updated_at", "2022-04-27 19:49:08.319889"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "user1@gmail.com"], ["name", "User1"], ["password_digest", "$2a$04$YOjuwIloIlGq3GzLaNKuFOT9JcHeft7hY1Xv1/xBnGQJ14kEcL3KS"], ["health", 100], ["alcohol", 0], ["happy", 0], ["tired", 0], ["money", 0], ["created_at", "2022-04-27 19:49:08.420334"], ["updated_at", "2022-04-27 19:49:08.420334"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "MyString"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.3ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "MyString"], ["health", 1], ["alcohol", 1], ["happy", 1], ["tired", 1], ["money", 1], ["created_at", "2022-04-27 19:49:08.431403"], ["updated_at", "2022-04-27 19:49:08.431403"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "MyString"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.5ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "MyString"], ["health", 1], ["alcohol", 1], ["happy", 1], ["tired", 1], ["money", 1], ["created_at", "2022-04-27 19:49:08.437289"], ["updated_at", "2022-04-27 19:49:08.437289"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "MyString"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.3ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "MyString"], ["health", 1], ["alcohol", 1], ["happy", 1], ["tired", 1], ["money", 1], ["created_at", "2022-04-27 19:49:08.443567"], ["updated_at", "2022-04-27 19:49:08.443567"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 AND "valera_actions"."id" != $2 LIMIT $3[0m  [["name", "MyString"], ["id", 4], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStatsRecord Create (4.6ms)[0m  [1m[32mINSERT INTO "stats_records" ("id", "name", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 1], ["name", "test"], ["money", 400], ["created_at", "2022-04-27 19:49:08.459802"], ["updated_at", "2022-04-27 19:49:08.459802"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@mail.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "test"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "asds" DISABLE TRIGGER ALL;ALTER TABLE "stats_records" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "valera_actions" DISABLE TRIGGER ALL;ALTER TABLE "conditions" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (7.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.7ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (1.2ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'rails_starter_project_test'[0m
+  [1m[35m (120.4ms)[0m  [1m[35mTRUNCATE TABLE "asds", "stats_records", "users", "valera_actions", "conditions" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "asds" ENABLE TRIGGER ALL;ALTER TABLE "stats_records" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "valera_actions" ENABLE TRIGGER ALL;ALTER TABLE "conditions" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (4.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "name", "password_digest", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["id", 1], ["email", "user1@gmail.com"], ["name", "User1"], ["password_digest", "$2a$04$VbnjgnwcemfPRnGBYYan4OGbrjr.clOe6bInKAuIx0fdLfBmxa1j6"], ["health", 100], ["alcohol", 0], ["happy", 0], ["tired", 0], ["money", 300], ["created_at", "2022-04-27 19:50:23.108919"], ["updated_at", "2022-04-27 19:50:23.108919"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (4.5ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "Go to work"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.8ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Go to work"], ["health", 0], ["alcohol", -30], ["happy", -5], ["tired", 70], ["money", 100], ["created_at", "2022-04-27 19:50:23.127104"], ["updated_at", "2022-04-27 19:50:23.127104"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCondition Create (9.0ms)[0m  [1m[32mINSERT INTO "conditions" ("attr_name", "min", "max", "attr_name_eff", "value_eff", "valera_action_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["attr_name", "alcohol"], ["min", 0], ["max", 70], ["attr_name_eff", "none"], ["value_eff", 0], ["valera_action_id", 1], ["created_at", "2022-04-27 19:50:23.150911"], ["updated_at", "2022-04-27 19:50:23.150911"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "user1@gmail.com"], ["name", "User1"], ["password_digest", "$2a$04$zNE7eod7lHSdDeQUlFDaE.6Zno4XDiWCItB//6GwxVi4FkuGggzB2"], ["health", 100], ["alcohol", 0], ["happy", 0], ["tired", 0], ["money", 0], ["created_at", "2022-04-27 19:50:23.254224"], ["updated_at", "2022-04-27 19:50:23.254224"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "MyString"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.3ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "MyString"], ["health", 1], ["alcohol", 1], ["happy", 1], ["tired", 1], ["money", 1], ["created_at", "2022-04-27 19:50:23.264178"], ["updated_at", "2022-04-27 19:50:23.264178"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "MyString"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.3ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "MyString"], ["health", 1], ["alcohol", 1], ["happy", 1], ["tired", 1], ["money", 1], ["created_at", "2022-04-27 19:50:23.270790"], ["updated_at", "2022-04-27 19:50:23.270790"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "MyString"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.5ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "MyString"], ["health", 1], ["alcohol", 1], ["happy", 1], ["tired", 1], ["money", 1], ["created_at", "2022-04-27 19:50:23.275769"], ["updated_at", "2022-04-27 19:50:23.275769"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 AND "valera_actions"."id" != $2 LIMIT $3[0m  [["name", "MyString"], ["id", 4], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStatsRecord Create (5.0ms)[0m  [1m[32mINSERT INTO "stats_records" ("id", "name", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 1], ["name", "test"], ["money", 400], ["created_at", "2022-04-27 19:50:23.293278"], ["updated_at", "2022-04-27 19:50:23.293278"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@mail.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "test"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "asds" DISABLE TRIGGER ALL;ALTER TABLE "stats_records" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "valera_actions" DISABLE TRIGGER ALL;ALTER TABLE "conditions" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (8.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.7ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (0.8ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'rails_starter_project_test'[0m
+  [1m[35m (108.2ms)[0m  [1m[35mTRUNCATE TABLE "asds", "stats_records", "users", "valera_actions", "conditions" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "asds" ENABLE TRIGGER ALL;ALTER TABLE "stats_records" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "valera_actions" ENABLE TRIGGER ALL;ALTER TABLE "conditions" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (5.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "name", "password_digest", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["id", 1], ["email", "user1@gmail.com"], ["name", "User1"], ["password_digest", "$2a$04$iNF4mg9a30Kp/cQ2HzEeiu1uivyrfs4Kmfxys9EnURszzWOwNItq."], ["health", 100], ["alcohol", 0], ["happy", 0], ["tired", 0], ["money", 300], ["created_at", "2022-04-27 19:51:30.320472"], ["updated_at", "2022-04-27 19:51:30.320472"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (4.4ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "Go to work"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.7ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Go to work"], ["health", 0], ["alcohol", -30], ["happy", -5], ["tired", 70], ["money", 100], ["created_at", "2022-04-27 19:51:30.338210"], ["updated_at", "2022-04-27 19:51:30.338210"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCondition Create (8.5ms)[0m  [1m[32mINSERT INTO "conditions" ("attr_name", "min", "max", "attr_name_eff", "value_eff", "valera_action_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["attr_name", "alcohol"], ["min", 0], ["max", 70], ["attr_name_eff", "none"], ["value_eff", 0], ["valera_action_id", 1], ["created_at", "2022-04-27 19:51:30.362178"], ["updated_at", "2022-04-27 19:51:30.362178"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "user1@gmail.com"], ["name", "User1"], ["password_digest", "$2a$04$MLrFVN5hKE.pHDwj/uhfweWyA96FdceKFpoSNEgFIdFFBCdust.S6"], ["health", 100], ["alcohol", 0], ["happy", 0], ["tired", 0], ["money", 0], ["created_at", "2022-04-27 19:51:30.464261"], ["updated_at", "2022-04-27 19:51:30.464261"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "MyString"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.3ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "MyString"], ["health", 1], ["alcohol", 1], ["happy", 1], ["tired", 1], ["money", 1], ["created_at", "2022-04-27 19:51:30.474760"], ["updated_at", "2022-04-27 19:51:30.474760"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "MyString"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.3ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "MyString"], ["health", 1], ["alcohol", 1], ["happy", 1], ["tired", 1], ["money", 1], ["created_at", "2022-04-27 19:51:30.481994"], ["updated_at", "2022-04-27 19:51:30.481994"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "MyString"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.5ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "MyString"], ["health", 1], ["alcohol", 1], ["happy", 1], ["tired", 1], ["money", 1], ["created_at", "2022-04-27 19:51:30.487398"], ["updated_at", "2022-04-27 19:51:30.487398"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 AND "valera_actions"."id" != $2 LIMIT $3[0m  [["name", "MyString"], ["id", 4], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStatsRecord Create (5.0ms)[0m  [1m[32mINSERT INTO "stats_records" ("id", "name", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 1], ["name", "test"], ["money", 400], ["created_at", "2022-04-27 19:51:30.503468"], ["updated_at", "2022-04-27 19:51:30.503468"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@mail.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "test"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "asds" DISABLE TRIGGER ALL;ALTER TABLE "stats_records" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "valera_actions" DISABLE TRIGGER ALL;ALTER TABLE "conditions" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (7.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.0ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (0.8ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'rails_starter_project_test'[0m
+  [1m[35m (152.2ms)[0m  [1m[35mTRUNCATE TABLE "asds", "stats_records", "users", "valera_actions", "conditions" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "asds" ENABLE TRIGGER ALL;ALTER TABLE "stats_records" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "valera_actions" ENABLE TRIGGER ALL;ALTER TABLE "conditions" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (4.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "name", "password_digest", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["id", 1], ["email", "user1@gmail.com"], ["name", "User1"], ["password_digest", "$2a$04$iGwktRma4jhFwrAtpY1VHujGCRKebHuF1FF9hmqNdLy0L7ce4Ddy6"], ["health", 100], ["alcohol", 0], ["happy", 0], ["tired", 0], ["money", 300], ["created_at", "2022-04-27 19:53:35.043395"], ["updated_at", "2022-04-27 19:53:35.043395"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (4.7ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "Go to work"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.6ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Go to work"], ["health", 0], ["alcohol", -30], ["happy", -5], ["tired", 70], ["money", 100], ["created_at", "2022-04-27 19:53:35.061818"], ["updated_at", "2022-04-27 19:53:35.061818"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCondition Create (8.9ms)[0m  [1m[32mINSERT INTO "conditions" ("attr_name", "min", "max", "attr_name_eff", "value_eff", "valera_action_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["attr_name", "alcohol"], ["min", 0], ["max", 70], ["attr_name_eff", "none"], ["value_eff", 0], ["valera_action_id", 1], ["created_at", "2022-04-27 19:53:35.085808"], ["updated_at", "2022-04-27 19:53:35.085808"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "user1@gmail.com"], ["name", "User1"], ["password_digest", "$2a$04$tjCwGJutyA1J5J4HMItAFe3OdUsWTACgZuVeMZcOSDU2E.aPhuM.u"], ["health", 100], ["alcohol", 0], ["happy", 0], ["tired", 0], ["money", 0], ["created_at", "2022-04-27 19:53:35.120938"], ["updated_at", "2022-04-27 19:53:35.120938"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "MyString"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.5ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "MyString"], ["health", 1], ["alcohol", 1], ["happy", 1], ["tired", 1], ["money", 1], ["created_at", "2022-04-27 19:53:35.172055"], ["updated_at", "2022-04-27 19:53:35.172055"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "MyString"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.9ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "MyString"], ["health", 1], ["alcohol", 1], ["happy", 1], ["tired", 1], ["money", 1], ["created_at", "2022-04-27 19:53:35.206554"], ["updated_at", "2022-04-27 19:53:35.206554"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "MyString"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.3ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "MyString"], ["health", 1], ["alcohol", 1], ["happy", 1], ["tired", 1], ["money", 1], ["created_at", "2022-04-27 19:53:35.215385"], ["updated_at", "2022-04-27 19:53:35.215385"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 AND "valera_actions"."id" != $2 LIMIT $3[0m  [["name", "MyString"], ["id", 4], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStatsRecord Create (5.5ms)[0m  [1m[32mINSERT INTO "stats_records" ("id", "name", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 1], ["name", "test"], ["money", 400], ["created_at", "2022-04-27 19:53:35.232573"], ["updated_at", "2022-04-27 19:53:35.232573"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@mail.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "test"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "asds" DISABLE TRIGGER ALL;ALTER TABLE "stats_records" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "valera_actions" DISABLE TRIGGER ALL;ALTER TABLE "conditions" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (9.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.2ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (0.8ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'rails_starter_project_test'[0m
+  [1m[35m (115.1ms)[0m  [1m[35mTRUNCATE TABLE "asds", "stats_records", "users", "valera_actions", "conditions" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "asds" ENABLE TRIGGER ALL;ALTER TABLE "stats_records" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "valera_actions" ENABLE TRIGGER ALL;ALTER TABLE "conditions" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (4.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "name", "password_digest", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["id", 1], ["email", "user1@gmail.com"], ["name", "User1"], ["password_digest", "$2a$04$y4y02cwrRbQ/5FcVNXjVs.Nm6NowYAgaP5s0ZafnvVnBDDL0.PNk."], ["health", 100], ["alcohol", 0], ["happy", 0], ["tired", 0], ["money", 300], ["created_at", "2022-04-27 19:58:18.288535"], ["updated_at", "2022-04-27 19:58:18.288535"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (4.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "Go to work"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.7ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Go to work"], ["health", 0], ["alcohol", -30], ["happy", -5], ["tired", 70], ["money", 100], ["created_at", "2022-04-27 19:58:18.306941"], ["updated_at", "2022-04-27 19:58:18.306941"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCondition Create (7.9ms)[0m  [1m[32mINSERT INTO "conditions" ("attr_name", "min", "max", "attr_name_eff", "value_eff", "valera_action_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["attr_name", "alcohol"], ["min", 0], ["max", 70], ["attr_name_eff", "none"], ["value_eff", 0], ["valera_action_id", 1], ["created_at", "2022-04-27 19:58:18.328873"], ["updated_at", "2022-04-27 19:58:18.328873"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/session/new" for 127.0.0.1 at 2022-04-28 02:58:18 +0700
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/_form.html.erb (Duration: 29.6ms | Allocations: 2773)
+  Rendered sessions/new.html.erb within layouts/application (Duration: 31.3ms | Allocations: 3431)
+[Webpacker] Compiling...
+[Webpacker] Compilation failed:
+/home/misha/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/webpacker-5.4.3/lib/webpacker/runner.rb:13:in ``': No such file or directory - yarn (Errno::ENOENT)
+	from /home/misha/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/webpacker-5.4.3/lib/webpacker/runner.rb:13:in `initialize'
+	from /home/misha/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/webpacker-5.4.3/lib/webpacker/runner.rb:6:in `new'
+	from /home/misha/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/webpacker-5.4.3/lib/webpacker/runner.rb:6:in `run'
+	from ./bin/webpack:18:in `block in <main>'
+	from ./bin/webpack:17:in `chdir'
+	from ./bin/webpack:17:in `<main>'
+
+  Rendered layout layouts/application.html.erb (Duration: 1254.9ms | Allocations: 30624)
+Completed 200 OK in 1270ms (Views: 1260.6ms | ActiveRecord: 0.0ms | Allocations: 34519)
+Started POST "/session" for 127.0.0.1 at 2022-04-28 02:58:19 +0700
+Processing by SessionsController#create as HTML
+  Parameters: {"email"=>"user1@gmail.com", "name"=>"User1", "password"=>"[FILTERED]", "commit"=>"Save "}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@gmail.com"], ["LIMIT", 1]]
+Redirected to http://www.example.com/
+Completed 302 Found in 4ms (ActiveRecord: 0.6ms | Allocations: 909)
+Started GET "/" for 127.0.0.1 at 2022-04-28 02:58:19 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://www.example.com/users/1
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms | Allocations: 815)
+Started GET "/users/1" for 127.0.0.1 at 2022-04-28 02:58:19 +0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mStatsRecord Exists? (4.2ms)[0m  [1m[34mSELECT 1 AS one FROM "stats_records" WHERE "stats_records"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStatsRecord Create (0.5ms)[0m  [1m[32mINSERT INTO "stats_records" ("id", "name", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 1], ["name", "User1"], ["money", 300], ["created_at", "2022-04-27 19:58:19.701005"], ["updated_at", "2022-04-27 19:58:19.701005"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_new_game.html.erb (Duration: 2.1ms | Allocations: 618)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mValeraAction Load (0.3ms)[0m  [1m[34mSELECT "valera_actions".* FROM "valera_actions"[0m
+  Rendered valera_actions/_list.html.erb (Duration: 3.8ms | Allocations: 1398)
+  Rendered valera_actions/_index.html.erb (Duration: 4.6ms | Allocations: 1684)
+  Rendered users/show.html.erb within layouts/application (Duration: 9.4ms | Allocations: 3218)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 19.0ms | Allocations: 5365)
+Completed 200 OK in 40ms (Views: 19.9ms | ActiveRecord: 9.8ms | Allocations: 10142)
+Started GET "/users/1" for 127.0.0.1 at 2022-04-28 02:58:19 +0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mStatsRecord Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "stats_records" WHERE "stats_records"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mStatsRecord Load (0.2ms)[0m  [1m[34mSELECT "stats_records".* FROM "stats_records" WHERE "stats_records"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_new_game.html.erb (Duration: 0.6ms | Allocations: 159)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mValeraAction Load (0.3ms)[0m  [1m[34mSELECT "valera_actions".* FROM "valera_actions"[0m
+  Rendered valera_actions/_list.html.erb (Duration: 2.5ms | Allocations: 699)
+  Rendered valera_actions/_index.html.erb (Duration: 2.6ms | Allocations: 744)
+  Rendered users/show.html.erb within layouts/application (Duration: 4.0ms | Allocations: 1074)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 10.2ms | Allocations: 3039)
+Completed 200 OK in 15ms (Views: 10.2ms | ActiveRecord: 1.5ms | Allocations: 4284)
+Started PATCH "/users/1" for 127.0.0.1 at 2022-04-28 02:58:19 +0700
+Processing by UsersController#update as HTML
+  Parameters: {"user"=>{"action_id"=>"1", "health"=>"0", "alcohol"=>"-30", "happy"=>"-5", "tired"=>"70", "money"=>"100"}, "commit"=>"Go to work", "id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mValeraAction Load (0.3ms)[0m  [1m[34mSELECT "valera_actions".* FROM "valera_actions" WHERE "valera_actions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCondition Load (0.3ms)[0m  [1m[34mSELECT "conditions".* FROM "conditions" WHERE "conditions"."valera_action_id" = $1[0m  [["valera_action_id", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "user1@gmail.com"], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "happy" = $1, "tired" = $2, "money" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["happy", -5], ["tired", 70], ["money", 400], ["updated_at", "2022-04-27 19:58:19.765500"], ["id", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/users/1
+Completed 302 Found in 9ms (ActiveRecord: 2.1ms | Allocations: 2441)
+Started GET "/users/1" for 127.0.0.1 at 2022-04-28 02:58:19 +0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mStatsRecord Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "stats_records" WHERE "stats_records"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mStatsRecord Load (0.2ms)[0m  [1m[34mSELECT "stats_records".* FROM "stats_records" WHERE "stats_records"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStatsRecord Update (0.4ms)[0m  [1m[33mUPDATE "stats_records" SET "money" = $1, "updated_at" = $2 WHERE "stats_records"."id" = $3[0m  [["money", 400], ["updated_at", "2022-04-27 19:58:19.777609"], ["id", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_new_game.html.erb (Duration: 0.4ms | Allocations: 159)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mValeraAction Load (0.3ms)[0m  [1m[34mSELECT "valera_actions".* FROM "valera_actions"[0m
+  Rendered valera_actions/_list.html.erb (Duration: 2.2ms | Allocations: 694)
+  Rendered valera_actions/_index.html.erb (Duration: 2.3ms | Allocations: 739)
+  Rendered users/show.html.erb within layouts/application (Duration: 3.2ms | Allocations: 1066)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 8.9ms | Allocations: 3030)
+Completed 200 OK in 15ms (Views: 8.9ms | ActiveRecord: 2.1ms | Allocations: 4189)
+Started PATCH "/users/1" for 127.0.0.1 at 2022-04-28 02:58:19 +0700
+Processing by UsersController#update as HTML
+  Parameters: {"user"=>{"action_id"=>"1", "health"=>"0", "alcohol"=>"-30", "happy"=>"-5", "tired"=>"70", "money"=>"100"}, "commit"=>"Go to work", "id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mValeraAction Load (0.4ms)[0m  [1m[34mSELECT "valera_actions".* FROM "valera_actions" WHERE "valera_actions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCondition Load (0.4ms)[0m  [1m[34mSELECT "conditions".* FROM "conditions" WHERE "conditions"."valera_action_id" = $1[0m  [["valera_action_id", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "user1@gmail.com"], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "happy" = $1, "tired" = $2, "money" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["happy", -10], ["tired", 100], ["money", 500], ["updated_at", "2022-04-27 19:58:19.813522"], ["id", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/users/1
+Completed 302 Found in 13ms (ActiveRecord: 2.6ms | Allocations: 2103)
+Started GET "/users/1" for 127.0.0.1 at 2022-04-28 02:58:19 +0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mStatsRecord Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "stats_records" WHERE "stats_records"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mStatsRecord Load (0.3ms)[0m  [1m[34mSELECT "stats_records".* FROM "stats_records" WHERE "stats_records"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStatsRecord Update (0.4ms)[0m  [1m[33mUPDATE "stats_records" SET "money" = $1, "updated_at" = $2 WHERE "stats_records"."id" = $3[0m  [["money", 500], ["updated_at", "2022-04-27 19:58:19.827007"], ["id", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_new_game.html.erb (Duration: 0.5ms | Allocations: 184)
+  Rendered users/_new_game.html.erb (Duration: 0.3ms | Allocations: 157)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mValeraAction Load (0.3ms)[0m  [1m[34mSELECT "valera_actions".* FROM "valera_actions"[0m
+  Rendered valera_actions/_list.html.erb (Duration: 2.2ms | Allocations: 698)
+  Rendered valera_actions/_index.html.erb (Duration: 2.4ms | Allocations: 743)
+  Rendered users/show.html.erb within layouts/application (Duration: 3.9ms | Allocations: 1313)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 10.1ms | Allocations: 3393)
+Completed 200 OK in 16ms (Views: 10.3ms | ActiveRecord: 2.2ms | Allocations: 4620)
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "user1@gmail.com"], ["name", "User1"], ["password_digest", "$2a$04$6VBRxUl.A2eJY8cSoqkYnOyYTt45YaJ0FWfS/URcV36F3Tw9DX8t."], ["health", 100], ["alcohol", 0], ["happy", 0], ["tired", 0], ["money", 0], ["created_at", "2022-04-27 19:58:19.868900"], ["updated_at", "2022-04-27 19:58:19.868900"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/session/new" for 127.0.0.1 at 2022-04-28 02:58:19 +0700
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/_form.html.erb (Duration: 1.2ms | Allocations: 505)
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.6ms | Allocations: 574)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 7.5ms | Allocations: 2672)
+Completed 200 OK in 9ms (Views: 8.1ms | ActiveRecord: 0.0ms | Allocations: 3120)
+Started POST "/session" for 127.0.0.1 at 2022-04-28 02:58:19 +0700
+Processing by SessionsController#create as HTML
+  Parameters: {"email"=>"user1@gmail.com", "name"=>"User1", "password"=>"[FILTERED]", "commit"=>"Save "}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@gmail.com"], ["LIMIT", 1]]
+Redirected to http://www.example.com/
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms | Allocations: 389)
+Started GET "/" for 127.0.0.1 at 2022-04-28 02:58:19 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://www.example.com/users/1
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms | Allocations: 433)
+Started GET "/users/1" for 127.0.0.1 at 2022-04-28 02:58:19 +0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mStatsRecord Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "stats_records" WHERE "stats_records"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStatsRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "stats_records" ("id", "name", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 1], ["name", "User1"], ["money", 0], ["created_at", "2022-04-27 19:58:19.923604"], ["updated_at", "2022-04-27 19:58:19.923604"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_new_game.html.erb (Duration: 0.5ms | Allocations: 172)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mValeraAction Load (0.3ms)[0m  [1m[34mSELECT "valera_actions".* FROM "valera_actions"[0m
+  Rendered valera_actions/_list.html.erb (Duration: 1.7ms | Allocations: 273)
+  Rendered valera_actions/_index.html.erb (Duration: 1.9ms | Allocations: 318)
+  Rendered users/show.html.erb within layouts/application (Duration: 2.9ms | Allocations: 667)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 8.2ms | Allocations: 2631)
+Completed 200 OK in 13ms (Views: 8.2ms | ActiveRecord: 1.8ms | Allocations: 3746)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+Started GET "/users/new" for 127.0.0.1 at 2022-04-28 02:58:19 +0700
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 2.9ms | Allocations: 1659)
+  Rendered users/new.html.erb within layouts/application (Duration: 3.9ms | Allocations: 1979)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 10.2ms | Allocations: 4076)
+Completed 200 OK in 12ms (Views: 10.8ms | ActiveRecord: 0.0ms | Allocations: 4704)
+Started POST "/users" for 127.0.0.1 at 2022-04-28 02:58:19 +0700
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"email"=>"user1@gmail.com", "name"=>"user1", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create User"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "user1@gmail.com"], ["name", "user1"], ["password_digest", "$2a$04$soRmQLX1FhRcMjV7sqOvqOUHiiT4z62RkXTwWmg4.cX.ma5RrcpDC"], ["health", 100], ["alcohol", 0], ["happy", 0], ["tired", 0], ["money", 300], ["created_at", "2022-04-27 19:58:19.979114"], ["updated_at", "2022-04-27 19:58:19.979114"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/users/2
+Completed 302 Found in 7ms (ActiveRecord: 1.3ms | Allocations: 1445)
+Started GET "/users/2" for 127.0.0.1 at 2022-04-28 02:58:19 +0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mStatsRecord Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "stats_records" WHERE "stats_records"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStatsRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "stats_records" ("id", "name", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 2], ["name", "user1"], ["money", 300], ["created_at", "2022-04-27 19:58:19.991461"], ["updated_at", "2022-04-27 19:58:19.991461"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_new_game.html.erb (Duration: 0.5ms | Allocations: 160)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mValeraAction Load (0.3ms)[0m  [1m[34mSELECT "valera_actions".* FROM "valera_actions"[0m
+  Rendered valera_actions/_list.html.erb (Duration: 1.4ms | Allocations: 276)
+  Rendered valera_actions/_index.html.erb (Duration: 1.5ms | Allocations: 321)
+  Rendered users/show.html.erb within layouts/application (Duration: 2.5ms | Allocations: 657)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 8.0ms | Allocations: 2621)
+Completed 200 OK in 13ms (Views: 8.0ms | ActiveRecord: 1.8ms | Allocations: 3775)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "MyString"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.4ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "MyString"], ["health", 1], ["alcohol", 1], ["happy", 1], ["tired", 1], ["money", 1], ["created_at", "2022-04-27 19:58:20.010976"], ["updated_at", "2022-04-27 19:58:20.010976"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "MyString"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.3ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "MyString"], ["health", 1], ["alcohol", 1], ["happy", 1], ["tired", 1], ["money", 1], ["created_at", "2022-04-27 19:58:20.016400"], ["updated_at", "2022-04-27 19:58:20.016400"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "MyString"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.4ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "MyString"], ["health", 1], ["alcohol", 1], ["happy", 1], ["tired", 1], ["money", 1], ["created_at", "2022-04-27 19:58:20.022479"], ["updated_at", "2022-04-27 19:58:20.022479"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 AND "valera_actions"."id" != $2 LIMIT $3[0m  [["name", "MyString"], ["id", 4], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStatsRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "stats_records" ("id", "name", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 1], ["name", "test"], ["money", 400], ["created_at", "2022-04-27 19:58:20.046690"], ["updated_at", "2022-04-27 19:58:20.046690"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@mail.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "test"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "asds" DISABLE TRIGGER ALL;ALTER TABLE "stats_records" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "valera_actions" DISABLE TRIGGER ALL;ALTER TABLE "conditions" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (9.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.7ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (1.0ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'rails_starter_project_test'[0m
+  [1m[35m (155.6ms)[0m  [1m[35mTRUNCATE TABLE "asds", "stats_records", "users", "valera_actions", "conditions" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "asds" ENABLE TRIGGER ALL;ALTER TABLE "stats_records" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "valera_actions" ENABLE TRIGGER ALL;ALTER TABLE "conditions" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (2.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (4.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "name", "password_digest", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["id", 1], ["email", "user1@gmail.com"], ["name", "User1"], ["password_digest", "$2a$04$99OFlKzBy1aMoMuK5eTj6e0yASafIvcHpZRkg78d4EWZBmbuc2dQK"], ["health", 100], ["alcohol", 0], ["happy", 0], ["tired", 0], ["money", 300], ["created_at", "2022-04-27 20:01:08.384519"], ["updated_at", "2022-04-27 20:01:08.384519"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (4.6ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "Go to work"], ["LIMIT", 1]]
+  [1m[36mValeraAction Create (0.8ms)[0m  [1m[32mINSERT INTO "valera_actions" ("name", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Go to work"], ["health", 0], ["alcohol", -30], ["happy", -5], ["tired", 70], ["money", 100], ["created_at", "2022-04-27 20:01:08.406909"], ["updated_at", "2022-04-27 20:01:08.406909"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCondition Create (9.1ms)[0m  [1m[32mINSERT INTO "conditions" ("attr_name", "min", "max", "attr_name_eff", "value_eff", "valera_action_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["attr_name", "alcohol"], ["min", 0], ["max", 70], ["attr_name_eff", "none"], ["value_eff", 0], ["valera_action_id", 1], ["created_at", "2022-04-27 20:01:08.431531"], ["updated_at", "2022-04-27 20:01:08.431531"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/session/new" for 127.0.0.1 at 2022-04-28 03:01:08 +0700
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/_form.html.erb (Duration: 7.7ms | Allocations: 2771)
+  Rendered sessions/new.html.erb within layouts/application (Duration: 9.3ms | Allocations: 3429)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 286.8ms | Allocations: 23620)
+Completed 200 OK in 300ms (Views: 290.8ms | ActiveRecord: 0.0ms | Allocations: 27514)
+Started POST "/session" for 127.0.0.1 at 2022-04-28 03:01:08 +0700
+Processing by SessionsController#create as HTML
+  Parameters: {"email"=>"user1@gmail.com", "name"=>"User1", "password"=>"[FILTERED]", "commit"=>"Save "}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@gmail.com"], ["LIMIT", 1]]
+Redirected to http://www.example.com/
+Completed 302 Found in 4ms (ActiveRecord: 0.5ms | Allocations: 911)
+Started GET "/" for 127.0.0.1 at 2022-04-28 03:01:08 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://www.example.com/users/1
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms | Allocations: 816)
+Started GET "/users/1" for 127.0.0.1 at 2022-04-28 03:01:08 +0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mStatsRecord Exists? (4.8ms)[0m  [1m[34mSELECT 1 AS one FROM "stats_records" WHERE "stats_records"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStatsRecord Create (0.5ms)[0m  [1m[32mINSERT INTO "stats_records" ("id", "name", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 1], ["name", "User1"], ["money", 300], ["created_at", "2022-04-27 20:01:08.833283"], ["updated_at", "2022-04-27 20:01:08.833283"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_new_game.html.erb (Duration: 1.6ms | Allocations: 619)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mValeraAction Load (0.4ms)[0m  [1m[34mSELECT "valera_actions".* FROM "valera_actions"[0m
+  Rendered valera_actions/_list.html.erb (Duration: 7.7ms | Allocations: 1401)
+  Rendered valera_actions/_index.html.erb (Duration: 8.5ms | Allocations: 1687)
+  Rendered users/show.html.erb within layouts/application (Duration: 12.3ms | Allocations: 3222)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 18.2ms | Allocations: 5371)
+Completed 200 OK in 38ms (Views: 18.7ms | ActiveRecord: 9.4ms | Allocations: 10473)
+Started GET "/users/1" for 127.0.0.1 at 2022-04-28 03:01:08 +0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mStatsRecord Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "stats_records" WHERE "stats_records"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mStatsRecord Load (0.3ms)[0m  [1m[34mSELECT "stats_records".* FROM "stats_records" WHERE "stats_records"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_new_game.html.erb (Duration: 0.4ms | Allocations: 159)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mValeraAction Load (0.3ms)[0m  [1m[34mSELECT "valera_actions".* FROM "valera_actions"[0m
+  Rendered valera_actions/_list.html.erb (Duration: 2.3ms | Allocations: 699)
+  Rendered valera_actions/_index.html.erb (Duration: 2.4ms | Allocations: 744)
+  Rendered users/show.html.erb within layouts/application (Duration: 3.3ms | Allocations: 1074)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 9.5ms | Allocations: 3041)
+Completed 200 OK in 15ms (Views: 9.6ms | ActiveRecord: 1.6ms | Allocations: 4290)
+Started PATCH "/users/1" for 127.0.0.1 at 2022-04-28 03:01:08 +0700
+Processing by UsersController#update as HTML
+  Parameters: {"user"=>{"action_id"=>"1", "health"=>"0", "alcohol"=>"-30", "happy"=>"-5", "tired"=>"70", "money"=>"100"}, "commit"=>"Go to work", "id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mValeraAction Load (0.3ms)[0m  [1m[34mSELECT "valera_actions".* FROM "valera_actions" WHERE "valera_actions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCondition Load (0.3ms)[0m  [1m[34mSELECT "conditions".* FROM "conditions" WHERE "conditions"."valera_action_id" = $1[0m  [["valera_action_id", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "user1@gmail.com"], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "happy" = $1, "tired" = $2, "money" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["happy", -5], ["tired", 70], ["money", 400], ["updated_at", "2022-04-27 20:01:08.898481"], ["id", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/users/1
+Completed 302 Found in 10ms (ActiveRecord: 2.2ms | Allocations: 2441)
+Started GET "/users/1" for 127.0.0.1 at 2022-04-28 03:01:08 +0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mStatsRecord Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "stats_records" WHERE "stats_records"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mStatsRecord Load (0.2ms)[0m  [1m[34mSELECT "stats_records".* FROM "stats_records" WHERE "stats_records"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStatsRecord Update (0.3ms)[0m  [1m[33mUPDATE "stats_records" SET "money" = $1, "updated_at" = $2 WHERE "stats_records"."id" = $3[0m  [["money", 400], ["updated_at", "2022-04-27 20:01:08.912187"], ["id", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_new_game.html.erb (Duration: 0.4ms | Allocations: 159)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mValeraAction Load (0.3ms)[0m  [1m[34mSELECT "valera_actions".* FROM "valera_actions"[0m
+  Rendered valera_actions/_list.html.erb (Duration: 2.4ms | Allocations: 694)
+  Rendered valera_actions/_index.html.erb (Duration: 2.6ms | Allocations: 739)
+  Rendered users/show.html.erb within layouts/application (Duration: 3.4ms | Allocations: 1066)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 9.2ms | Allocations: 3032)
+Completed 200 OK in 15ms (Views: 9.2ms | ActiveRecord: 2.2ms | Allocations: 4207)
+Started PATCH "/users/1" for 127.0.0.1 at 2022-04-28 03:01:08 +0700
+Processing by UsersController#update as HTML
+  Parameters: {"user"=>{"action_id"=>"1", "health"=>"0", "alcohol"=>"-30", "happy"=>"-5", "tired"=>"70", "money"=>"100"}, "commit"=>"Go to work", "id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mValeraAction Load (0.3ms)[0m  [1m[34mSELECT "valera_actions".* FROM "valera_actions" WHERE "valera_actions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCondition Load (0.3ms)[0m  [1m[34mSELECT "conditions".* FROM "conditions" WHERE "conditions"."valera_action_id" = $1[0m  [["valera_action_id", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "user1@gmail.com"], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "happy" = $1, "tired" = $2, "money" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["happy", -10], ["tired", 100], ["money", 500], ["updated_at", "2022-04-27 20:01:08.944172"], ["id", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/users/1
+Completed 302 Found in 9ms (ActiveRecord: 2.4ms | Allocations: 2130)
+Started GET "/users/1" for 127.0.0.1 at 2022-04-28 03:01:08 +0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mStatsRecord Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "stats_records" WHERE "stats_records"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mStatsRecord Load (0.3ms)[0m  [1m[34mSELECT "stats_records".* FROM "stats_records" WHERE "stats_records"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStatsRecord Update (0.4ms)[0m  [1m[33mUPDATE "stats_records" SET "money" = $1, "updated_at" = $2 WHERE "stats_records"."id" = $3[0m  [["money", 500], ["updated_at", "2022-04-27 20:01:08.957883"], ["id", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_new_game.html.erb (Duration: 0.4ms | Allocations: 184)
+  Rendered users/_new_game.html.erb (Duration: 0.3ms | Allocations: 157)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mValeraAction Load (0.3ms)[0m  [1m[34mSELECT "valera_actions".* FROM "valera_actions"[0m
+  Rendered valera_actions/_list.html.erb (Duration: 2.3ms | Allocations: 698)
+  Rendered valera_actions/_index.html.erb (Duration: 2.4ms | Allocations: 743)
+  Rendered users/show.html.erb within layouts/application (Duration: 3.9ms | Allocations: 1313)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 9.8ms | Allocations: 3395)
+Completed 200 OK in 16ms (Views: 9.8ms | ActiveRecord: 2.3ms | Allocations: 4610)
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "user1@gmail.com"], ["name", "User1"], ["password_digest", "$2a$04$376xpjerhJ4etzdelnLDTu4iYO0HAmxDBZrmdB7d124S629l.9Ae6"], ["health", 100], ["alcohol", 0], ["happy", 0], ["tired", 0], ["money", 0], ["created_at", "2022-04-27 20:01:08.998553"], ["updated_at", "2022-04-27 20:01:08.998553"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/session/new" for 127.0.0.1 at 2022-04-28 03:01:09 +0700
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/_form.html.erb (Duration: 1.1ms | Allocations: 505)
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.4ms | Allocations: 574)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 7.0ms | Allocations: 2674)
+Completed 200 OK in 8ms (Views: 7.7ms | ActiveRecord: 0.0ms | Allocations: 3122)
+Started POST "/session" for 127.0.0.1 at 2022-04-28 03:01:09 +0700
+Processing by SessionsController#create as HTML
+  Parameters: {"email"=>"user1@gmail.com", "name"=>"User1", "password"=>"[FILTERED]", "commit"=>"Save "}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@gmail.com"], ["LIMIT", 1]]
+Redirected to http://www.example.com/
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms | Allocations: 389)
+Started GET "/" for 127.0.0.1 at 2022-04-28 03:01:09 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://www.example.com/users/1
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms | Allocations: 435)
+Started GET "/users/1" for 127.0.0.1 at 2022-04-28 03:01:09 +0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mStatsRecord Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "stats_records" WHERE "stats_records"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStatsRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "stats_records" ("id", "name", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 1], ["name", "User1"], ["money", 0], ["created_at", "2022-04-27 20:01:09.052744"], ["updated_at", "2022-04-27 20:01:09.052744"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_new_game.html.erb (Duration: 0.4ms | Allocations: 172)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mValeraAction Load (0.3ms)[0m  [1m[34mSELECT "valera_actions".* FROM "valera_actions"[0m
+  Rendered valera_actions/_list.html.erb (Duration: 1.5ms | Allocations: 273)
+  Rendered valera_actions/_index.html.erb (Duration: 1.6ms | Allocations: 318)
+  Rendered users/show.html.erb within layouts/application (Duration: 2.6ms | Allocations: 667)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 8.3ms | Allocations: 2633)
+Completed 200 OK in 14ms (Views: 8.3ms | ActiveRecord: 1.8ms | Allocations: 3746)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+Started GET "/users/new" for 127.0.0.1 at 2022-04-28 03:01:09 +0700
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 3.1ms | Allocations: 1659)
+  Rendered users/new.html.erb within layouts/application (Duration: 4.9ms | Allocations: 1979)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 10.7ms | Allocations: 4078)
+Completed 200 OK in 13ms (Views: 11.4ms | ActiveRecord: 0.0ms | Allocations: 4706)
+Started POST "/users" for 127.0.0.1 at 2022-04-28 03:01:09 +0700
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"email"=>"user1@gmail.com", "name"=>"user1", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create User"}
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "health", "alcohol", "happy", "tired", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "user1@gmail.com"], ["name", "user1"], ["password_digest", "$2a$04$9KClzXWhBJJff7NXhzmuk.U.e93mTUUkk8PIMsxA35.dyvEMJ7OHS"], ["health", 100], ["alcohol", 0], ["happy", 0], ["tired", 0], ["money", 300], ["created_at", "2022-04-27 20:01:09.122483"], ["updated_at", "2022-04-27 20:01:09.122483"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/users/2
+Completed 302 Found in 7ms (ActiveRecord: 1.3ms | Allocations: 1448)
+Started GET "/users/2" for 127.0.0.1 at 2022-04-28 03:01:09 +0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mStatsRecord Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "stats_records" WHERE "stats_records"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStatsRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "stats_records" ("id", "name", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 2], ["name", "user1"], ["money", 300], ["created_at", "2022-04-27 20:01:09.135872"], ["updated_at", "2022-04-27 20:01:09.135872"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_new_game.html.erb (Duration: 0.5ms | Allocations: 160)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mValeraAction Load (0.3ms)[0m  [1m[34mSELECT "valera_actions".* FROM "valera_actions"[0m
+  Rendered valera_actions/_list.html.erb (Duration: 1.6ms | Allocations: 276)
+  Rendered valera_actions/_index.html.erb (Duration: 1.8ms | Allocations: 321)
+  Rendered users/show.html.erb within layouts/application (Duration: 3.1ms | Allocations: 657)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 9.0ms | Allocations: 2635)
+Completed 200 OK in 14ms (Views: 9.0ms | ActiveRecord: 1.9ms | Allocations: 3772)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "asds" DISABLE TRIGGER ALL;ALTER TABLE "stats_records" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "valera_actions" DISABLE TRIGGER ALL;ALTER TABLE "conditions" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (8.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.9ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (0.9ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'rails_starter_project_test'[0m
+  [1m[35m (115.0ms)[0m  [1m[35mTRUNCATE TABLE "asds", "stats_records", "users", "valera_actions", "conditions" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "asds" ENABLE TRIGGER ALL;ALTER TABLE "stats_records" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "valera_actions" ENABLE TRIGGER ALL;ALTER TABLE "conditions" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (3.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mStatsRecord Create (4.9ms)[0m  [1m[32mINSERT INTO "stats_records" ("id", "name", "money", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 1], ["name", "test"], ["money", 400], ["created_at", "2022-04-27 20:01:20.132773"], ["updated_at", "2022-04-27 20:01:20.132773"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (4.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@mail.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mValeraAction Exists? (4.9ms)[0m  [1m[34mSELECT 1 AS one FROM "valera_actions" WHERE "valera_actions"."name" = $1 LIMIT $2[0m  [["name", "test"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "asds" DISABLE TRIGGER ALL;ALTER TABLE "stats_records" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "valera_actions" DISABLE TRIGGER ALL;ALTER TABLE "conditions" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (8.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.6ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (1.4ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'rails_starter_project_test'[0m
+  [1m[35m (108.9ms)[0m  [1m[35mTRUNCATE TABLE "asds", "stats_records", "users", "valera_actions", "conditions" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "asds" ENABLE TRIGGER ALL;ALTER TABLE "stats_records" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "valera_actions" ENABLE TRIGGER ALL;ALTER TABLE "conditions" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (3.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (5.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (9.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (7.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
