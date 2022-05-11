@@ -34,4 +34,8 @@ jobs:
         run: |
           bundle exec rake db:create
           rails db:migrate
-          bundle exec rspec
+          bundle exec rspec spec/factories
+          bundle exec rspec spec/models
+          bundle exec rspec spec/requests
+          bundle exec rspec spec/rails_helper.rb
+          bundle exec rspec spec/spec_helper.rb
