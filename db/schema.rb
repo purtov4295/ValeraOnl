@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,60 +12,55 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_21_164612) do
-
+ActiveRecord::Schema.define(version: 20_220_121_150_302) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
-  create_table "asds", force: :cascade do |t|
-    t.string "name"
-    t.integer "money"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table 'conditions', force: :cascade do |t|
+    t.string 'attr_name'
+    t.integer 'min'
+    t.integer 'max'
+    t.string 'attr_name_eff'
+    t.integer 'value_eff'
+    t.bigint 'valera_action_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['valera_action_id'], name: 'index_conditions_on_valera_action_id'
   end
 
-  create_table "conditions", force: :cascade do |t|
-    t.string "attr_name"
-    t.integer "min"
-    t.integer "max"
-    t.string "attr_name_eff"
-    t.integer "value_eff"
-    t.bigint "valera_action_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["valera_action_id"], name: "index_conditions_on_valera_action_id"
+  create_table 'droptables', force: :cascade do |t|
   end
 
-  create_table "stats_records", force: :cascade do |t|
-    t.string "name"
-    t.integer "money"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table 'stats_records', force: :cascade do |t|
+    t.string 'name'
+    t.integer 'money'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "email"
-    t.string "name"
-    t.string "password_digest"
-    t.integer "health"
-    t.integer "alcohol"
-    t.integer "happy"
-    t.integer "tired"
-    t.integer "money"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table 'users', force: :cascade do |t|
+    t.string 'email'
+    t.string 'name'
+    t.string 'password_digest'
+    t.integer 'health'
+    t.integer 'alcohol'
+    t.integer 'happy'
+    t.integer 'tired'
+    t.integer 'money'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
   end
 
-  create_table "valera_actions", force: :cascade do |t|
-    t.string "name"
-    t.integer "health"
-    t.integer "alcohol"
-    t.integer "happy"
-    t.integer "tired"
-    t.integer "money"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table 'valera_actions', force: :cascade do |t|
+    t.string 'name'
+    t.integer 'health'
+    t.integer 'alcohol'
+    t.integer 'happy'
+    t.integer 'tired'
+    t.integer 'money'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
   end
 
-  add_foreign_key "conditions", "valera_actions"
+  add_foreign_key 'conditions', 'valera_actions'
 end

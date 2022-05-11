@@ -1,10 +1,8 @@
 {
   "RSpec": {
     "coverage": {
-      "/home/misha/8sem/kurs/ValeraOnl/config/environment.rb": {
+      "/home/nikolai/Рабочий стол/rails-valera-online/config/environment.rb": {
         "lines": [
-          null,
-          null,
           null,
           1,
           null,
@@ -12,10 +10,8 @@
           1
         ]
       },
-      "/home/misha/8sem/kurs/ValeraOnl/config/application.rb": {
+      "/home/nikolai/Рабочий стол/rails-valera-online/config/application.rb": {
         "lines": [
-          null,
-          null,
           1,
           null,
           1,
@@ -53,20 +49,16 @@
           null
         ]
       },
-      "/home/misha/8sem/kurs/ValeraOnl/config/boot.rb": {
+      "/home/nikolai/Рабочий стол/rails-valera-online/config/boot.rb": {
         "lines": [
-          null,
-          null,
           1,
           null,
           1,
           1
         ]
       },
-      "/home/misha/8sem/kurs/ValeraOnl/config/environments/test.rb": {
+      "/home/nikolai/Рабочий стол/rails-valera-online/config/environments/test.rb": {
         "lines": [
-          null,
-          null,
           null,
           null,
           null,
@@ -118,9 +110,8 @@
           null
         ]
       },
-      "/home/misha/8sem/kurs/ValeraOnl/config/initializers/application_controller_renderer.rb": {
+      "/home/nikolai/Рабочий стол/rails-valera-online/config/initializers/application_controller_renderer.rb": {
         "lines": [
-          null,
           null,
           null,
           null,
@@ -131,10 +122,8 @@
           null
         ]
       },
-      "/home/misha/8sem/kurs/ValeraOnl/config/initializers/assets.rb": {
+      "/home/nikolai/Рабочий стол/rails-valera-online/config/initializers/assets.rb": {
         "lines": [
-          null,
-          null,
           null,
           null,
           null,
@@ -151,10 +140,8 @@
           null
         ]
       },
-      "/home/misha/8sem/kurs/ValeraOnl/config/initializers/backtrace_silencers.rb": {
+      "/home/nikolai/Рабочий стол/rails-valera-online/config/initializers/backtrace_silencers.rb": {
         "lines": [
-          null,
-          null,
           null,
           null,
           null,
@@ -165,9 +152,8 @@
           1
         ]
       },
-      "/home/misha/8sem/kurs/ValeraOnl/config/initializers/content_security_policy.rb": {
+      "/home/nikolai/Рабочий стол/rails-valera-online/config/initializers/content_security_policy.rb": {
         "lines": [
-          null,
           null,
           null,
           null,
@@ -200,10 +186,8 @@
           null
         ]
       },
-      "/home/misha/8sem/kurs/ValeraOnl/config/initializers/cookies_serializer.rb": {
+      "/home/nikolai/Рабочий стол/rails-valera-online/config/initializers/cookies_serializer.rb": {
         "lines": [
-          null,
-          null,
           null,
           null,
           null,
@@ -211,19 +195,16 @@
           1
         ]
       },
-      "/home/misha/8sem/kurs/ValeraOnl/config/initializers/filter_parameter_logging.rb": {
+      "/home/nikolai/Рабочий стол/rails-valera-online/config/initializers/filter_parameter_logging.rb": {
         "lines": [
-          null,
-          null,
           null,
           null,
           null,
           1
         ]
       },
-      "/home/misha/8sem/kurs/ValeraOnl/config/initializers/inflections.rb": {
+      "/home/nikolai/Рабочий стол/rails-valera-online/config/initializers/inflections.rb": {
         "lines": [
-          null,
           null,
           null,
           null,
@@ -242,8 +223,22 @@
           null
         ]
       },
-      "/home/misha/8sem/kurs/ValeraOnl/config/initializers/mime_types.rb": {
+      "/home/nikolai/Рабочий стол/rails-valera-online/config/initializers/mime_types.rb": {
         "lines": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/home/nikolai/Рабочий стол/rails-valera-online/config/initializers/permissions_policy.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
           null,
           null,
           null,
@@ -251,26 +246,8 @@
           null
         ]
       },
-      "/home/misha/8sem/kurs/ValeraOnl/config/initializers/permissions_policy.rb": {
+      "/home/nikolai/Рабочий стол/rails-valera-online/config/initializers/wrap_parameters.rb": {
         "lines": [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ]
-      },
-      "/home/misha/8sem/kurs/ValeraOnl/config/initializers/wrap_parameters.rb": {
-        "lines": [
-          null,
-          null,
           null,
           null,
           null,
@@ -287,18 +264,104 @@
           null
         ]
       },
-      "/home/misha/8sem/kurs/ValeraOnl/config/routes.rb": {
+      "/home/nikolai/Рабочий стол/rails-valera-online/config/routes.rb": {
         "lines": [
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
           null,
           null,
           1,
           1,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          1,
+          null
+        ]
+      },
+      "/home/nikolai/Рабочий стол/rails-valera-online/app/helpers/application_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/home/nikolai/Рабочий стол/rails-valera-online/app/helpers/conditions_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/home/nikolai/Рабочий стол/rails-valera-online/app/helpers/home_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/home/nikolai/Рабочий стол/rails-valera-online/app/helpers/sessions_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/home/nikolai/Рабочий стол/rails-valera-online/app/helpers/stats_records_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/home/nikolai/Рабочий стол/rails-valera-online/app/helpers/users_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/home/nikolai/Рабочий стол/rails-valera-online/app/helpers/valera_actions_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/home/nikolai/Рабочий стол/rails-valera-online/app/models/condition.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      },
+      "/home/nikolai/Рабочий стол/rails-valera-online/app/models/application_record.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      },
+      "/home/nikolai/Рабочий стол/rails-valera-online/app/models/stats_record.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/home/nikolai/Рабочий стол/rails-valera-online/app/models/user.rb": {
+        "lines": [
+          1,
+          1,
           null,
           1,
           1,
           null,
           1,
           1,
+          1,
+          1,
+          1,
+          null,
           1,
           1,
           null,
@@ -306,78 +369,22 @@
           null
         ]
       },
-      "/home/misha/8sem/kurs/ValeraOnl/app/helpers/application_helper.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          null
-        ]
-      },
-      "/home/misha/8sem/kurs/ValeraOnl/app/helpers/conditions_helper.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          null
-        ]
-      },
-      "/home/misha/8sem/kurs/ValeraOnl/app/helpers/home_helper.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          null
-        ]
-      },
-      "/home/misha/8sem/kurs/ValeraOnl/app/helpers/sessions_helper.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          null
-        ]
-      },
-      "/home/misha/8sem/kurs/ValeraOnl/app/helpers/stats_records_helper.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          null
-        ]
-      },
-      "/home/misha/8sem/kurs/ValeraOnl/app/helpers/users_helper.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          null
-        ]
-      },
-      "/home/misha/8sem/kurs/ValeraOnl/app/helpers/valera_actions_helper.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          null
-        ]
-      },
-      "/home/misha/8sem/kurs/ValeraOnl/lib/welcome.rb": {
+      "/home/nikolai/Рабочий стол/rails-valera-online/app/models/valera_action.rb": {
         "lines": [
           1,
           1,
-          null,
           1,
-          0,
-          null,
-          null,
           1,
-          0,
-          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
           null
         ]
       }
     },
-    "timestamp": 1651175262
+    "timestamp": 1642782331
   }
 }
