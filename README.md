@@ -1,4 +1,4 @@
-# README
+[![Unit Tests & Lint](https://github.com/purtov4295/ValeraOnl/actions/workflows/main.yml/badge.svg)](https://github.com/purtov4295/ValeraOnl/actions/workflows/main.yml)
 
 
 Postgrsql-setup:
